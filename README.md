@@ -11,11 +11,14 @@ Do an AI capable of playing chess at a good level (greater than 1900 elo)
 
 *Methods:*  
 - [x] Movement of pieces
-- [ ] Capture of ennemy pieces
-- [ ] Check on the king
+- [x] Capture of ennemy pieces
+- [x] Check on the king
+- [ ] Checkmate
+- [ ] Stalemate
 - [ ] En passant
 - [ ] Castle (on both sides)
 - [ ] Promotion
+- [ ] Pinned pieces
 
 2. Create the AI
 3. Train the AI
