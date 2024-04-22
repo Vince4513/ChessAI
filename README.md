@@ -16,8 +16,8 @@ Do an AI capable of playing chess at a good level (greater than 1900 elo)
 - [ ] Checkmate
 - [ ] Stalemate
 - [ ] En passant
-- [ ] Castle (on both sides)
-- [ ] Promotion
+- [x] Castle (on both sides) with checks
+- [x] Promotion
 - [ ] Pinned pieces
 
 2. Create the AI

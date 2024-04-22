@@ -30,6 +30,9 @@ class Chessboard:
         display_board = np.array([[str(piece)[0:2] if piece is not None else ' .' for piece in row] for row in self.board])
         print(display_board)
 
+    def set_piece(self, position, piece):
+        self.board[position] = piece
+    
     def get_piece(self, position):
         return self.board[position]
     
@@ -67,4 +70,45 @@ class Chessboard:
     def remove_piece(self, position):
         # Move a piece from start to end coordinates
         self.board[position] = None
+    
+    def castle(self, color, end_pos):
+        # Determine the positions of the king and rook involved in castling
+        king_position = self.find_king(color)
         
+        if end_pos[1] > king_position[1]:
+            rook_position = (king_position[0], 7)
+            new_king_position = (king_position[0], king_position[1] + 2)
+            new_rook_position = (king_position[0], king_position[1] + 1)
+        
+        elif end_pos[1] < king_position[1]:
+            rook_position = (king_position[0], 0)
+            new_king_position = (king_position[0], king_position[1] - 2)
+            new_rook_position = (king_position[0], king_position[1] - 1)
+        else:
+            print("Invalid castle direction.")
+            return False
+
+        # Check if the king and rook are in their initial positions
+        king = self.board[king_position]
+        rook = self.board[rook_position]
+        if not isinstance(king, King) or not isinstance(rook, Rook):
+            print("Invalid castle: King or rook has moved before.")
+            return False
+
+        # Check if the squares between the king and rook are empty
+        for col in range(min(rook_position[1], new_king_position[1]) + 1, max(rook_position[1], new_king_position[1])):
+            if self.board[new_king_position[0], col] is not None:
+                print("Invalid castle: Squares between king and rook are not empty.")
+                return False
+
+        # Check if the king is in check or if it moves through or lands on a square attacked by an opponent's piece
+        # Implement this check based on your existing check detection logic
+
+        # Perform the castle by moving the king and rook to their new positions
+        self.move_piece(king_position, new_king_position)
+        self.move_piece(rook_position, new_rook_position)
+
+        return True
+
+if __name__ == "__main__":
+    pass

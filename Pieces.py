@@ -31,7 +31,6 @@ class Rook(Piece):
 
             return True
         else:
-            # print("Rook: Illegal move")
             return False
 
 class Bishop(Piece):
@@ -110,12 +109,12 @@ class King(Piece):
     def validate_move(self, current_pos, new_pos, _):
         # Logic to validate king's movement
         # Check if the new position is valid for the king
+        
         if abs(new_pos[0] - current_pos[0]) <= 1 and abs(new_pos[1] - current_pos[1]) <= 1:
             return True
         else:
-            # print("King: Illegal move")
             return False
-
+        
 class Pawn(Piece):
     def __init__(self, color):
         super().__init__(color)
@@ -151,3 +150,7 @@ class Pawn(Piece):
                 return False
         else:
             print("Pawn color not determined")
+
+
+if __name__ == "__main__":
+    pass
